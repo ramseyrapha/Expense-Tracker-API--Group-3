@@ -1,0 +1,27 @@
+{
+  "name": "expense-tracker-api---group-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NECX12/Expense-Tracker-API---Group-3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/NECX12/Expense-Tracker-API---Group-3/issues"
+  },
+  "homepage": "https://github.com/NECX12/Expense-Tracker-API---Group-3#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  }
+}
