@@ -17,20 +17,16 @@ const expensesPath = path.join(__dirname, "expenses.json");
 
 let expenses = JSON.parse(fs.readFileSync(expensesPath, "utf-8"))
 
-
-// list elements in the expenses dummy-database
-app.get("/api/v1/expenses", (req, res) => {
+const getAllExpenses = (req, res) => {
     res.status(200).json({
         status : "success",
         data : {
             expenses
         }
     });
-});
+}
 
-
-// Read just a single expense
-app.get("/api/v1/expenses/:id", (req, res) => {
+const getSingleExpense = (req, res) => {
     const id = parseInt(req.params.id);
     const expense = expenses.find(e => e.id === id);
 
@@ -47,10 +43,9 @@ app.get("/api/v1/expenses/:id", (req, res) => {
             expense 
         }
     });
-});
+}
 
-// add expenses
-app.post("/api/v1/expenses", (req, res) => {
+const addExpense = (req, res) => {
     const newId = expenses[expenses.length - 1].id + 1;
     const newExpense = Object.assign({id: newId}, req.body);
     expenses.push(newExpense)
@@ -63,10 +58,10 @@ app.post("/api/v1/expenses", (req, res) => {
             }
         });
     });
-});
+}
 
-// Update the API
-app.patch("/api/v1/expenses/:id", (req, res) => {
+
+const updateExpense = (req, res) => {
   const id = parseInt(req.params.id);
   const index = expenses.findIndex(e => e.id === id);
 
@@ -95,10 +90,9 @@ app.patch("/api/v1/expenses/:id", (req, res) => {
       }
     });
   });
-});
+}
 
-// Delete expense by id
-app.delete("/api/v1/expenses/:id", (req, res) => {
+const deleteExpense = (req, res) => {
   const id = parseInt(req.params.id);
   const expenseExists = expenses.find(e => e.id === id);
 
@@ -127,7 +121,23 @@ app.delete("/api/v1/expenses/:id", (req, res) => {
       data: null
     });
   });
-});
+}
+
+
+// list elements in the expenses dummy-database
+app.get("/api/v1/expenses", getAllExpenses);
+
+// Read just a single expense
+app.get("/api/v1/expenses/:id", getSingleExpense);
+
+// add expenses
+app.post("/api/v1/expenses", addExpense);
+
+// Update the API
+app.patch("/api/v1/expenses/:id", updateExpense);
+
+// Delete expense by id
+app.delete("/api/v1/expenses/:id", deleteExpense);
 
 
 app.listen(port, () => {
