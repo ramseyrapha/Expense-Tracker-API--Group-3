@@ -1,0 +1,19 @@
+{
+  "name": "backend_mini_project",
+  "version": "1.0.0",
+  "description": "A mini project for backend development with nodejs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "BeTechified Group 3",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.3"
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "amount": 2000,
+    "date": "02-03-2025",
+    "category": "groceries"
+  },
+  {
+    "id": 2,
+    "amount": 100,
+    "date": "03-04-2025",
+    "category": "phone"
+  },
+  {
+    "id": 3,
+    "amount": 2000,
+    "date": "05-04-2025",
+    "category": "chair"
+  },
+  {
+    "id": 4,
+    "amount": 3000,
+    "date": "16-04-2025",
+    "category": "tables"
+  },
+  {
+    "id": 5,
+    "amount": 3000,
+    "date": "16-04-2025",
+    "category": "tables"
+  }
+]
