@@ -4,6 +4,8 @@
 
 require("dotenv").config();
 const express = require("express");
+const morgan = require("morgan");
+
 const fs = require("fs");
 const path = require("path");
 
@@ -124,20 +126,27 @@ const deleteExpense = (req, res) => {
 }
 
 
-// list elements in the expenses dummy-database
-app.get("/api/v1/expenses", getAllExpenses);
-
-// Read just a single expense
-app.get("/api/v1/expenses/:id", getSingleExpense);
-
+// Routes
+// app.get("/api/v1/expenses", getAllExpenses);
+// app.get("/api/v1/expenses/:id", getSingleExpense);
 // add expenses
-app.post("/api/v1/expenses", addExpense);
-
-// Update the API
-app.patch("/api/v1/expenses/:id", updateExpense);
-
+// app.post("/api/v1/expenses", addExpense);
+// app.patch("/api/v1/expenses/:id", updateExpense);
 // Delete expense by id
-app.delete("/api/v1/expenses/:id", deleteExpense);
+// app.delete("/api/v1/expenses/:id", deleteExpense);
+
+// the routes
+app.route("/api/v1/expenses")
+        .get(getAllExpenses)
+        .post(addExpense);
+
+app.route("/api/v1/expenses/:id")
+        .get(getSingleExpense)
+        .patch(updateExpense)
+        .delete(deleteExpense)
+
+
+
 
 
 app.listen(port, () => {
