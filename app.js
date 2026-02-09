@@ -14,6 +14,9 @@ const port = process.env.PORT || 3000;
 
 
 app.use(express.json()); // JSON Parser
+app.use(morgan("dev"));
+
+const expenseRouter = express.Router()
 
 const expensesPath = path.join(__dirname, "expenses.json");
 
@@ -125,30 +128,22 @@ const deleteExpense = (req, res) => {
   });
 }
 
-
-// Routes
-// app.get("/api/v1/expenses", getAllExpenses);
-// app.get("/api/v1/expenses/:id", getSingleExpense);
-// add expenses
-// app.post("/api/v1/expenses", addExpense);
-// app.patch("/api/v1/expenses/:id", updateExpense);
-// Delete expense by id
-// app.delete("/api/v1/expenses/:id", deleteExpense);
+// middleware
+app.use("/api/v1/expenses", expenseRouter)
 
 // the routes
-app.route("/api/v1/expenses")
+expenseRouter
+        .route("/")
         .get(getAllExpenses)
         .post(addExpense);
 
-app.route("/api/v1/expenses/:id")
+expenseRouter
+        .route("/:id")
         .get(getSingleExpense)
         .patch(updateExpense)
         .delete(deleteExpense)
 
-
-
-
-
+// listen to the request
 app.listen(port, () => {
     console.log(`App is running at http://localhost:${port}`);
 });
